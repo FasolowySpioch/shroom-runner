@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(0f,-2f,0f); //starting possition
+        GetComponent<Animation>().Play("idle");
     }
 
     // Update is called once per frame
@@ -19,8 +20,6 @@ public class PlayerController : MonoBehaviour
     {
         movementInput.x =  Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
-
         transform.position += new Vector3(movementInput.x, movementInput.y, 0f) * Time.deltaTime * MovementSpeed;
-
     }
 }
