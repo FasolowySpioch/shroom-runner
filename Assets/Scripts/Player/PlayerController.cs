@@ -8,18 +8,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float MovementSpeed = 3;
     private Vector2 MovementInput;
 
-    private Vector2 movementInput;
+    private Animator PlayerAnimator; //Connection to animator
     void Start()
     {
         transform.position = new Vector3(0f,-2f,0f); //starting possition
-        GetComponent<Animation>().Play("idle");
+        PlayerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        movementInput.x =  Input.GetAxisRaw("Horizontal");
-        movementInput.y = Input.GetAxisRaw("Vertical");
-        transform.position += new Vector3(movementInput.x, movementInput.y, 0f) * Time.deltaTime * MovementSpeed;
+        //Player changing postion on the map
+        MovementInput.x =  Input.GetAxisRaw("Horizontal");
+        MovementInput.y = Input.GetAxisRaw("Vertical");
+        transform.position += new Vector3(MovementInput.x, MovementInput.y, 0f) * Time.deltaTime * MovementSpeed;
+
+        //Overall player walking animations
+        if (MovementInput != Vector2.zero)
+        {
+            PlayerAnimator.SetBool("isWalking", true);
+        }
+        else {
+            PlayerAnimator.SetBool("isWalking", false);
+        }
     }
 }
