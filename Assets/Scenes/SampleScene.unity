@@ -331,7 +331,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262616436}
-  m_LocalRotation: {x: -0, y: -0, z: -0.01186165, w: 0.99992967}
+  m_LocalRotation: {x: -0, y: -0, z: -0.011861563, w: 0.99992967}
   m_LocalPosition: {x: 0.2058, y: -0.0017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2977,7 +2977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596385725}
   m_LocalRotation: {x: -0, y: -0, z: 0.72045213, w: -0.6935048}
-  m_LocalPosition: {x: -0.1701698, y: 0.49570954, z: 0}
+  m_LocalPosition: {x: -0.1701698, y: 0.4957095, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3581,11 +3581,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8478553540853150096, guid: b614251fff5db1d46bc306b387254231, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.93304837
+      value: 0.9330485
       objectReference: {fileID: 0}
     - target: {fileID: -8478553540853150096, guid: b614251fff5db1d46bc306b387254231, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.35975087
+      value: 0.3597506
       objectReference: {fileID: 0}
     - target: {fileID: -8110390645254590756, guid: b614251fff5db1d46bc306b387254231, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3609,7 +3609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8004350403799754019, guid: b614251fff5db1d46bc306b387254231, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3939927
+      value: 0.39399245
       objectReference: {fileID: 0}
     - target: {fileID: -8004350403799754019, guid: b614251fff5db1d46bc306b387254231, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3617,7 +3617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8004350403799754019, guid: b614251fff5db1d46bc306b387254231, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9191136
+      value: 0.91911364
       objectReference: {fileID: 0}
     - target: {fileID: -7660789143796290022, guid: b614251fff5db1d46bc306b387254231, type: 3}
       propertyPath: m_SortingLayer

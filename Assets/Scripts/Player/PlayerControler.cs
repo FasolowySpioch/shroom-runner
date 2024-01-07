@@ -7,6 +7,7 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] Rigidbody2D PlayerRigidbody;
     [SerializeField] float MovementSpeed = 3;
     private Vector2 MovementInput;
+    private Camera CameraMain;
 
     private Animator PlayerAnimator; //Connection to animator
 
@@ -15,6 +16,7 @@ public class PlayerControler : MonoBehaviour
     {
         transform.position = new Vector3(0f, -2f, 0f); //starting possition
         PlayerAnimator = GetComponent<Animator>();
+        CameraMain = Camera.main; //reference to main camera
     }
 
     // Update is called once per frame
@@ -25,7 +27,15 @@ public class PlayerControler : MonoBehaviour
         MovementInput.y = Input.GetAxisRaw("Vertical");
         PlayerRigidbody.velocity = MovementInput * MovementSpeed;
 
-        //Overall player walking animations
+        //Mouse postition:
+        Vector3 MousePosition = Input.mousePosition;
+        Vector3 ScreenPoint = CameraMain.ViewportToWorldPoint(transform.localPosition); 
+
+        //Angle to shooting
+        Vector2 offset = new Vector2(MousePosition.x - ScreenPoint.x, ScreenPoint.y - MousePosition.y);
+        float shootAngle = Mathf.Atan2(offset.y, offset.y) * Mathf.Rad2Deg;
+
+        //Overall player animations variables
         if (MovementInput != Vector2.zero)
         {
             PlayerAnimator.SetBool("isWalking", true);
@@ -33,6 +43,16 @@ public class PlayerControler : MonoBehaviour
         else
         {
             PlayerAnimator.SetBool("isWalking", false);
+        }
+
+
+        //Aiming
+        if (MousePosition.x < ScreenPoint.x)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else {
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 }
