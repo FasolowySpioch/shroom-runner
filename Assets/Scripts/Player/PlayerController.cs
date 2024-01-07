@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] float MovementSpeed = 3;
     private Vector2 MovementInput;
 
     private Animator PlayerAnimator; //Connection to animator
+
+    // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(0f,-2f,0f); //starting possition
@@ -24,11 +25,12 @@ public class PlayerController : MonoBehaviour
         transform.position += new Vector3(MovementInput.x, MovementInput.y, 0f) * Time.deltaTime * MovementSpeed;
 
         //Overall player walking animations
-        if (MovementInput != Vector2.zero)
+        if (MovementInput != Vector2.zero) 
         {
             PlayerAnimator.SetBool("isWalking", true);
         }
-        else {
+        else 
+        {
             PlayerAnimator.SetBool("isWalking", false);
         }
     }
