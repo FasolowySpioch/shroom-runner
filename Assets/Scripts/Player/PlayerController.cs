@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] Rigidbody2D PlayerRigidbody;
     [SerializeField] float MovementSpeed = 3;
     private Vector2 MovementInput;
 
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
         //Player changing postion on the map
         MovementInput.x =  Input.GetAxisRaw("Horizontal");
         MovementInput.y = Input.GetAxisRaw("Vertical");
-        transform.position += new Vector3(MovementInput.x, MovementInput.y, 0f) * Time.deltaTime * MovementSpeed;
+        PlayerRigidbody.velocity = MovementInput * MovementSpeed;
 
         //Overall player walking animations
         if (MovementInput != Vector2.zero) 
