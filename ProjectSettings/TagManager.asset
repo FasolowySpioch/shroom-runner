@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Backgorund
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3510516333
+    locked: 0
+  - name: PlayerBODY
+    uniqueID: 857211193
+    locked: 1
+  - name: PlayerWEAPON
+    uniqueID: 2054477379
+    locked: 0
+  - name: PlayerHAND
+    uniqueID: 3469819931
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
