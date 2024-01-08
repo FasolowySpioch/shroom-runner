@@ -25,11 +25,13 @@ public class PlayerControler : MonoBehaviour
         //Player changing postion on the map
         MovementInput.x = Input.GetAxisRaw("Horizontal");
         MovementInput.y = Input.GetAxisRaw("Vertical");
+        MovementInput.Normalize();
         PlayerRigidbody.velocity = MovementInput * MovementSpeed;
+
 
         //Mouse postition:
         Vector3 MousePosition = Input.mousePosition;
-        Vector3 ScreenPoint = CameraMain.ViewportToWorldPoint(transform.localPosition); 
+        Vector3 ScreenPoint = CameraMain.WorldToScreenPoint(transform.localPosition); 
 
         //Angle to shooting
         Vector2 offset = new Vector2(MousePosition.x - ScreenPoint.x, ScreenPoint.y - MousePosition.y);
@@ -44,7 +46,7 @@ public class PlayerControler : MonoBehaviour
         {
             PlayerAnimator.SetBool("isWalking", false);
         }
-
+        Debug.Log("Movement speed = " + PlayerRigidbody.velocity.magnitude);
 
         //Aiming
         if (MousePosition.x < ScreenPoint.x)
