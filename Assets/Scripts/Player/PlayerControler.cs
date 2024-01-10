@@ -53,7 +53,16 @@ public class PlayerControler : MonoBehaviour
         {
             playerAnimator.SetBool("isWalking", false);
         }
-        Debug.Log("Movement speed = " + playerRigidbody.velocity.magnitude);
+
+        if (mousePosition.x < screenPoint.x)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+            emptyWeaponDirector.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            emptyWeaponDirector.localScale = new Vector3(1f, 1f, 1f);
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
