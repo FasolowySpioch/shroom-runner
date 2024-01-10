@@ -1,60 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerControler : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D PlayerRigidbody;
-    [SerializeField] float MovementSpeed = 3;
-    private Vector2 MovementInput;
-    private Camera CameraMain;
+    [SerializeField] Rigidbody2D playerRigidbody;
+    [SerializeField] float movementSpeed = 3;
+    [SerializeField] GameObject refPlayerBullet;
+    [SerializeField] GameObject firePositionChange;
+    [SerializeField] Transform emptyWeaponDirector;
+    [SerializeField] Transform firePosition;
+    private Vector2 movementInput;
+    private Camera cameraMain;
 
-    private Animator PlayerAnimator; //Connection to animator
+    private Animator playerAnimator; //Connection to animator
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(0f, -2f, 0f); //starting possition
-        PlayerAnimator = GetComponent<Animator>();
-        CameraMain = Camera.main; //reference to main camera
+        playerAnimator = GetComponent<Animator>();
+        cameraMain = Camera.main; //reference to main camera
     }
 
     // Update is called once per frame
     void Update()
     {
         //Player changing postion on the map
-        MovementInput.x = Input.GetAxisRaw("Horizontal");
-        MovementInput.y = Input.GetAxisRaw("Vertical");
-        MovementInput.Normalize();
-        PlayerRigidbody.velocity = MovementInput * MovementSpeed;
+        movementInput.x = Input.GetAxisRaw("Horizontal");
+        movementInput.y = Input.GetAxisRaw("Vertical");
+        movementInput.Normalize();
+        playerRigidbody.velocity = movementInput * movementSpeed;
 
 
         //Mouse postition:
-        Vector3 MousePosition = Input.mousePosition;
-        Vector3 ScreenPoint = CameraMain.WorldToScreenPoint(transform.localPosition); 
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 screenPoint = cameraMain.WorldToScreenPoint(transform.localPosition); 
 
         //Angle to shooting
-        Vector2 offset = new Vector2(MousePosition.x - ScreenPoint.x, ScreenPoint.y - MousePosition.y);
-        float shootAngle = Mathf.Atan2(offset.y, offset.y) * Mathf.Rad2Deg;
+        Vector2 offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
+        float shootAngle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+        emptyWeaponDirector.rotation = Quaternion.Euler(0, 0, shootAngle);
 
         //Overall player animations variables
-        if (MovementInput != Vector2.zero)
+        if (movementInput != Vector2.zero)
         {
-            PlayerAnimator.SetBool("isWalking", true);
+            playerAnimator.SetBool("isWalking", true);
         }
         else
         {
-            PlayerAnimator.SetBool("isWalking", false);
+            playerAnimator.SetBool("isWalking", false);
         }
-        Debug.Log("Movement speed = " + PlayerRigidbody.velocity.magnitude);
+        Debug.Log("Movement speed = " + playerRigidbody.velocity.magnitude);
 
-        //Aiming
-        if (MousePosition.x < ScreenPoint.x)
+        if (Input.GetMouseButtonDown(0))
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            Instantiate(refPlayerBullet, firePosition.position, firePosition.rotation);
+            playerAnimator.SetBool("isShooting", true);
         }
         else {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            playerAnimator.SetBool("isShooting", false);
         }
     }
 }
