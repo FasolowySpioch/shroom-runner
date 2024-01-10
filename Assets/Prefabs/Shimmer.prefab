@@ -3394,9 +3394,9 @@ MonoBehaviour:
   playerRigidbody: {fileID: 1320519980397493896}
   movementSpeed: 3
   refPlayerBullet: {fileID: 5187787332509869657, guid: dbf0a80b404caae4486b597b13303cec, type: 3}
-  firePositionChange: {fileID: 0}
   emptyWeaponDirector: {fileID: 4901847632804040393}
   firePosition: {fileID: 3870104281468710295}
+  timeBetweenShots: 0.2
 --- !u!1 &6561314750083130587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,8 +3421,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6561314750083130587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.10455936, y: 0.64311385, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.073, y: 0.696, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3870104281468710295}
@@ -3453,7 +3453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6616123844585608887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.691, y: 0, z: 0}
+  m_LocalPosition: {x: 0.715, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

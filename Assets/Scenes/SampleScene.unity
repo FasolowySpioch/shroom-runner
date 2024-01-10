@@ -3028,6 +3028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1320519980397494004, guid: 95df914d99a5cce4c82c3240dcb9f0b6, type: 3}
+      propertyPath: timeBetweenShots
+      value: 0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 1320519980397494005, guid: 95df914d99a5cce4c82c3240dcb9f0b6, type: 3}
       propertyPath: m_Name
       value: Shimmer

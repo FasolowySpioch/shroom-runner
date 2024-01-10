@@ -9,9 +9,10 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] Rigidbody2D playerRigidbody;
     [SerializeField] float movementSpeed = 3;
     [SerializeField] GameObject refPlayerBullet;
-    [SerializeField] GameObject firePositionChange;
     [SerializeField] Transform emptyWeaponDirector;
     [SerializeField] Transform firePosition;
+    [SerializeField] double timeBetweenShots = 0.2;
+    private float shotCounter = 0;
     private Vector2 movementInput;
     private Camera cameraMain;
 
@@ -44,7 +45,7 @@ public class PlayerControler : MonoBehaviour
         float shootAngle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         emptyWeaponDirector.rotation = Quaternion.Euler(0, 0, shootAngle);
 
-        //Overall player animations variables
+        //Animation Movement
         if (movementInput != Vector2.zero)
         {
             playerAnimator.SetBool("isWalking", true);
@@ -54,6 +55,7 @@ public class PlayerControler : MonoBehaviour
             playerAnimator.SetBool("isWalking", false);
         }
 
+        //Rotating shooting
         if (mousePosition.x < screenPoint.x)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -70,6 +72,23 @@ public class PlayerControler : MonoBehaviour
             playerAnimator.SetBool("isShooting", true);
         }
         else {
+            playerAnimator.SetBool("isShooting", false);
+        }
+
+        //Cosntant shooting
+        if(Input.GetMouseButton(1))
+        {
+            shotCounter -= Time.deltaTime;
+            if (shotCounter <= 0)
+            {
+                shotCounter = (float)timeBetweenShots;
+                Instantiate(refPlayerBullet, firePosition.position, firePosition.rotation);
+                Debug.Log("Spawn Bullet");
+                playerAnimator.SetBool("isShooting", true);
+            }
+        }
+        else 
+        { 
             playerAnimator.SetBool("isShooting", false);
         }
     }
